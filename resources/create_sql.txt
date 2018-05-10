@@ -1,0 +1,26 @@
+-- 내 스키마
+DROP SCHEMA if exists dbsetting;
+
+-- 내 스키마
+CREATE SCHEMA dbsetting;
+
+
+use dbsetting;
+
+-- 제품
+CREATE TABLE product (
+	code char(4)     NOT NULL, 
+	name varchar(20) NULL,
+	primary key(code)      
+);
+
+-- 판매현황
+CREATE TABLE sale (
+	no         INT(11) NOT NULL, 
+	code       char(4) NOT NULL, 
+	price      INT(11) NOT NULL, 
+	saleCnt    INT(11) NOT NULL, 
+	marginRate INT(11) NOT NULL,  
+	primary key(no),
+	foreign key(code) references product(code)
+);
