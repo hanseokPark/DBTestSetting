@@ -48,7 +48,7 @@ public class BackupService implements DaoService {
 			// System.out.println("column Cnt " + columnCnt);
 			while (rs.next()) {
 				for (int i = 1; i <= columnCnt; i++) {
-					sb.append(rs.getObject(i) + "|");
+					sb.append(rs.getObject(i) + ",");
 				}
 				sb.replace(sb.length() - 1, sb.length(), "");
 				sb.append("\r\n");

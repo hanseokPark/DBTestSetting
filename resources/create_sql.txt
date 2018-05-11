@@ -1,11 +1,11 @@
 -- 내 스키마
-DROP SCHEMA if exists dbsetting;
+DROP SCHEMA if exists CoffeeSetting;
 
 -- 내 스키마
-CREATE SCHEMA dbsetting;
+CREATE SCHEMA CoffeeSetting;
 
 
-use dbsetting;
+use CoffeeSetting;
 
 -- 제품
 CREATE TABLE product (
