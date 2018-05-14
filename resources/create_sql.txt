@@ -16,7 +16,7 @@ CREATE TABLE product (
 
 -- 판매현황
 CREATE TABLE sale (
-	no         INT(11) NOT NULL, 
+	no         INT(11) NOT NULL auto_increment, 
 	code       char(4) NOT NULL, 
 	price      INT(11) NOT NULL, 
 	saleCnt    INT(11) NOT NULL, 
