@@ -26,7 +26,7 @@ public class InitService implements DaoService {
 	}
 
 	private void createTriggerOrProcedure() {
-		File f = new File(System.getProperty("user.dir") + "\\resources\\create_trigger_procedure.txt");
+		File f = new File(System.getProperty("user.dir") + "\\resources\\create_procedure.txt");
 		String dbName = (String) DBCon.getInstance().getProperties().get("dbname");
 		ExecuteSql.getInstance().execSQL("use " + dbName);
 		if (!f.exists()) {

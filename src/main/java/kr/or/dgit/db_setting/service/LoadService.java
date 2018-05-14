@@ -33,7 +33,7 @@ public class LoadService implements DaoService {
 
 	private String getPath(String tblName) {
 		String path = String.format("%s\\DataFiles\\%s.txt", System.getProperty("user.dir"), tblName);
-		String sql = String.format("load data local infile '%s' into table %s character set 'utf8' fields TERMINATED by '|'", path,tblName);
+		String sql = String.format("load data local infile '%s' into table %s character set 'utf8' fields TERMINATED by ','", path,tblName);
 		sql = sql.replace("\\", "/");
 		return sql;
 	}

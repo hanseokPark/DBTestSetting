@@ -1,0 +1,15 @@
+
+CREATE PROCEDURE proc_saledetail_orderby(in isSalePrice boolean)
+BEGIN   
+    set @score:=0, @rank:=0;      
+    select greatest( @rank := if(@score = if(isSalePrice, 판매액, 마진액), @rank, @rank + 1),
+           least(0, @score := if(isSalePrice,판매액,마진액)) ) as rank,         
+           code, name, 가격 as price, 판매수량 as saleCnt, 공급가액 as supplyPrice, 부가세액 as addTax, 판매액 as salePrice, 마진율 as marginRate, 마진액 as marginPrice   
+    from (select no, s.code code, name, price 가격, salecnt 판매수량, 
+                 @saleprice:=price*salecnt 판매액, @addtax := ceil(@saleprice/11) 부가세액,
+                 @supprice := @saleprice - @addtax 공급가액,
+                 marginrate 마진율,
+                 @marPrice := round(@supprice * (marginrate/100)) 마진액
+          from  sale s join product p on s.code = p.code ) t   
+    order by if(isSalePrice,판매액,마진액) desc;    
+END;
